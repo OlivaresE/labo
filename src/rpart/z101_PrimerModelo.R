@@ -7,26 +7,37 @@ require("rpart")
 require("rpart.plot")
 library(dplyr) 
 
+#
+
+
 #Aqui se debe poner la carpeta de SU computadora local
 setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1\\labo")  #Establezco el Working Directory
 
 #cargo los datos de 202011 que es donde voy a ENTRENAR el modelo
 dtrain  <- fread("./datasets/paquete_premium_202011.csv")
 
+install.packages("zoo")                                    # Install & load zoo package
+library("zoo")
+dtrain <- na.aggregate(dtrain)  
+
+
 #genero el modelo,  aqui se construye el arbol
 modelo  <- rpart("clase_ternaria ~ .",  #quiero predecir clase_ternaria a partir de el resto de las variables
                  data = dtrain,
-                 xval=0,
-                 cp=        -0.3,   #esto significa no limitar la complejidad de los splits
-                 minsplit=  80,     #minima cantidad de registros para que se haga el split
-                 minbucket=  1,     #tamaño minimo de una hoja
-                 maxdepth=   4 )    #profundidad maxima del arbol
+                 xval = 2,
+                 cp = -0.045,   #esto significa no limitar la complejidad de los splits
+                 minsplit = 80,     #minima cantidad de registros para que se haga el split
+                 minbucket = 1,     #tamaño minimo de una hoja
+                 maxdepth=   8,       #profundidad maxima del arbol
+                 )   
+
+
 
 
 #grafico el arbol
-prp(modelo, extra=101, digits=5, branch=1, type=4, varlen=0, faclen=0, xcompact = FALSE, ycompact = FALSE)
+prp(modelo, extra=101, digits=5, branch=1, type=4, varlen=0, faclen=0)
 
-
+#xcompact = FALSE, ycompact = FALSE
 #Ahora aplico al modelo  a los datos de 202101  y genero la salida para kaggle
 
 #cargo los datos de 202011, que es donde voy a APLICAR el modelo
@@ -57,8 +68,19 @@ fwrite( entrega,
         sep= "," )
 
 
-count <- dtrain %>% 
+
+
+
+
+
+-----------------------------------------
+count <- dapply %>% 
   group_by(clase_ternaria) %>% 
   count(clase_ternaria)
 
+count <- dapply %>% 
+  group_by(Predicted) %>% 
+  count(Predicted)
 
+prediccion <- prediccion %>% 
+  arrange(desc(BAJA+2))
