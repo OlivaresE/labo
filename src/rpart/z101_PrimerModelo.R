@@ -6,19 +6,13 @@ require("data.table")
 require("rpart")
 require("rpart.plot")
 library(dplyr) 
-
-#
-
+library("zoo")
 
 #Aqui se debe poner la carpeta de SU computadora local
 setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1\\labo")  #Establezco el Working Directory
 
 #cargo los datos de 202011 que es donde voy a ENTRENAR el modelo
 dtrain  <- fread("./datasets/paquete_premium_202011.csv")
-
-install.packages("zoo")                                    # Install & load zoo package
-library("zoo")
-dtrain <- na.aggregate(dtrain)  
 
 
 #genero el modelo,  aqui se construye el arbol
@@ -30,8 +24,6 @@ modelo  <- rpart("clase_ternaria ~ .",  #quiero predecir clase_ternaria a partir
                  minbucket = 1,     #tamaño minimo de una hoja
                  maxdepth=   8,       #profundidad maxima del arbol
                  )   
-
-
 
 
 #grafico el arbol
