@@ -7,7 +7,4 @@ Crear un environment para la materia
 Activar el environment
 conda install -c r r-irkernel 
 run jupyter lab
-Si hay problemas de compatibilidad o de instalación se recomienda instalar los paquetes desde el prompt usando: conda install -c r r-essentials
-
-
-
+Si hay problemas de compatibilidad o de instalación se recomienda instalar los paquetes desde el prompt usando: conda install -c r r-nameofpackage
