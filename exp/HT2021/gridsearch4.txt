@@ -1,0 +1,1 @@
+cp	max_depth	min_split	minbucket	ganancia_promedio
