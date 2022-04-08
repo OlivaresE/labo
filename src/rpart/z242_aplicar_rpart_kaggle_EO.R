@@ -9,8 +9,8 @@ require("rpart.plot")
 #Aqui debe cambiar los parametros por los que desea probar
 
 param_basicos  <- list( "cp"=          -0.227637468,  #complejidad minima
-                        "minsplit"=   13,     #minima cantidad de registros en un nodo para hacer el split
-                        "minbucket"=  3163,     #minima cantidad de registros en una hoja
+                        "minsplit"=   980,     #minima cantidad de registros en un nodo para hacer el split
+                        "minbucket"=  300, #minima cantidad de registros en una hoja
                         "maxdepth"=     6 )    #profundidad máxima del arbol
 
 
@@ -23,7 +23,7 @@ dtrain  <- fread("./labo/datasets/paquete_premium_202011.csv")
 #genero el modelo,  aqui se construye el arbol
 modelo  <- rpart("clase_ternaria ~ .",  #quiero predecir clase_ternaria a partir de el resto de las variables
                  data = dtrain,
-                 xval=0,
+                 xval=5,
                  control=  param_basicos )
 
 #grafico el arbol
@@ -33,7 +33,7 @@ prp(modelo, extra=101, digits=5, branch=1, type=4, varlen=0, faclen=0)
 #Ahora aplico al modelo  a los datos de 202101  y genero la salida para kaggle
 
 #cargo los datos de 202011, que es donde voy a APLICAR el modelo
-dapply  <- fread("./datasets/paquete_premium_202101.csv")
+dapply  <- fread("./labo/datasets/paquete_premium_202101.csv")
 
 #aplico el modelo a los datos nuevos
 prediccion  <- predict( modelo, dapply , type = "prob")
@@ -52,9 +52,9 @@ entrega  <- dapply[   , list(numero_de_cliente, Predicted) ] #genero la salida
 
 #genero el archivo para Kaggle
 #creo la carpeta donde va el experimento
-dir.create( "./labo/exp/", showWarnings = FALSE  )
-dir.create( "./labo/exp/KA2022/", showWarnings = FALSE  )
+dir.create( "./exp/", showWarnings = FALSE  )
+dir.create( "./exp/KA2022/", showWarnings = FALSE  )
 
 fwrite( entrega, 
-        file= "./labo/exp/KA2022/K242_001.csv", 
+        file= "./labo/exp/KA2022/K242_010.csv", 
         sep= "," )
