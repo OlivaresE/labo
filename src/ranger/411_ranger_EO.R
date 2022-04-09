@@ -14,7 +14,7 @@ require("randomForest")  #solo se usa para imputar nulos
 
 options(repr.plot.width = 20, repr.plot.height = 10) 
 setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1") #Aqui se debe poner la ruta de la PC local
-
+ 
 #cargo los datos donde entreno
 dtrain  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
 
@@ -29,10 +29,10 @@ dapply  <- na.roughfix( dapply )  #tambien imputo los nulos en los datos donde v
 
 #genero el modelo de Random Forest con la libreria ranger
 #notar como la suma de muchos arboles contrarresta el efecto de min.node.size=1
-param  <- list( "num.trees"=       5500,  #cantidad de arboles
-                "mtry"=             80,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain))
-                "min.node.size"= 600,  #tamaño minimo de las hojas
-                "max.depth"=        6   # 0 significa profundidad infinita
+param  <- list( "num.trees"=       100,  #cantidad de arboles
+                "mtry"=             18,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain))
+                "min.node.size"= 208,  #tamaño minimo de las hojas
+                "max.depth"=        11   # 0 significa profundidad infinita
               )
 
 set.seed(477293) #Establezco la semilla aleatoria

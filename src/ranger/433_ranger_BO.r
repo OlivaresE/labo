@@ -30,7 +30,7 @@ hs  <- makeParamSet(
           makeIntegerParam("mtry" ,             lower=    2L, upper=   50L))
 
 
-ksemilla_azar  <- 102191  #Aqui poner la propia semilla
+ksemilla_azar  <- 477293  #Aqui poner la propia semilla
 
 #------------------------------------------------------------------------------
 #graba a un archivo los componentes de lista
@@ -145,10 +145,10 @@ EstimarGanancia_ranger  <- function( x )
 #Aqui comienza el programa
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1") #Aqui se debe poner la ruta de la PC local
 
 #cargo el dataset donde voy a entrenar el modelo
-dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)   #donde entreno
+dataset  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)   #donde entreno
 
 
 #creo la carpeta donde va el experimento
