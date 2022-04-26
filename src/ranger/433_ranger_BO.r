@@ -155,7 +155,7 @@ dataset  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors
 # HT  representa  Hiperparameter Tuning
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/HT4330/", showWarnings = FALSE )
-setwd("D:\\gdrive\\Austral2022R\\labo\\exp\\HT4330\\")   #Establezco el Working Directory DEL EXPERIMENTO
+setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1\\labo\\exp\\HT4330\\")   #Establezco el Working Directory DEL EXPERIMENTO
 
 #en estos archivos quedan los resultados
 kbayesiana  <- "HT433.RDATA"

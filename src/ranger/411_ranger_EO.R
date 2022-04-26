@@ -14,7 +14,7 @@ require("randomForest")  #solo se usa para imputar nulos
 
 options(repr.plot.width = 20, repr.plot.height = 10) 
 setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1") #Aqui se debe poner la ruta de la PC local
- 
+
 #cargo los datos donde entreno
 dtrain  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
 
@@ -72,8 +72,17 @@ fwrite( entrega,
         sep="," )
 
 
+#Parametros estandar
 #param  <- list( "num.trees"=       1200,  #cantidad de arboles
   #              "mtry"=             45,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain))
   #              "min.node.size"=  800,  #tamaño minimo de las hojas
    #             "max.depth"=        6   # 0 significa profundidad infinita
+#)
+
+#Parametros primera salida de ranger
+#notar como la suma de muchos arboles contrarresta el efecto de min.node.size=1
+#param  <- list( "num.trees"=       100,  #cantidad de arboles
+      #          "mtry"=             18,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain))
+     #           "min.node.size"= 208,  #tamaño minimo de las hojas
+       #         "max.depth"=        11   # 0 significa profundidad infinita
 #)
