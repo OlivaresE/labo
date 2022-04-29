@@ -8,10 +8,10 @@ require("data.table")
 require("xgboost")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1")   #Establezco el Working Directory
 
 #cargo el dataset donde voy a entrenar
-dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
+dataset  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
 
 
 #paso la clase a binaria que tome valores {0,1}  enteros
@@ -34,7 +34,7 @@ modelo  <- xgb.train( data= dtrain,
                     )
 
 #aplico el modelo a los datos sin clase
-dapply  <- fread("./datasets/paquete_premium_202101.csv")
+dapply  <- fread("./labo/datasets/paquete_premium_202101.csv")
 
 #aplico el modelo a los datos nuevos
 prediccion  <- predict( modelo, 
@@ -44,6 +44,10 @@ prediccion  <- predict( modelo,
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
                                  "Predicted"= prediccion > 1/60)  ) #genero la salida
+
+#Genero la entrega para Kaggle
+entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
+                                 "Predicted"= prediccion)  ) #genero la salida
 
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/KA2552/", showWarnings = FALSE )

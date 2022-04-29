@@ -6,7 +6,7 @@ gc()             #garbage collection
 
 
 #uso esta semilla para los canaritos
-set.seed(477293)
+set.seed(525713)
 
 require("data.table")
 require("lightgbm")
@@ -32,9 +32,17 @@ dtrain  <- lgb.Dataset( data= data.matrix(  dataset[ , campos_buenos, with=FALSE
 #genero el modelo con los parametros por default
 modelo  <- lgb.train( data= dtrain,
                       param= list( objective=        "binary",
-                                   num_iterations=     40,  #40
-                                   num_leaves=         64,  #64
-                                   min_data_in_leaf= 3000 ) #3000
+                                   num_iterations=     181,  #40
+                                   num_leaves=         812,  #64
+                                   min_data_in_leaf= 6218, #3000
+                                   seed = 999983,
+                                   max_bin=31,
+                                   learning_rate=0.028765272,
+                                   feature_fraction=0.458839023,
+                                   max_depth=-1,
+                                   verbosity=-100
+                                   
+                      ) 
                     )
 
 #aplico el modelo a los datos sin clase
@@ -57,3 +65,4 @@ archivo_salida  <- "./labo/exp/KA2512/KA_512_001.csv"
 fwrite( entrega, 
         file= archivo_salida, 
         sep= "," )
+

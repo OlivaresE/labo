@@ -8,10 +8,10 @@ require("data.table")
 require("xgboost")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("D:\\gdrive\\Austral2022R\\")   #Establezco el Working Directory
+setwd("C:\\Users\\oliva\\OneDrive\\Desktop\\DS\\Austral\\08 - Labo1\\") #Aqui se debe poner la ruta de la PC local   
 
 #cargo el dataset donde voy a entrenar
-dataset  <- fread("./datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
+dataset  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors= TRUE)
 
 
 #paso la clase a binaria que tome valores {0,1}  enteros
@@ -37,7 +37,7 @@ modelo  <- xgb.train( data= dtrain,
                     )
 
 #aplico el modelo a los datos sin clase
-dapply  <- fread("./datasets/paquete_premium_202101.csv")
+dapply  <- fread("./labo/datasets/paquete_premium_202101.csv")
 
 #aplico el modelo a los datos nuevos
 prediccion  <- predict( modelo, 
@@ -56,3 +56,4 @@ archivo_salida  <- "./labo/exp/KA5610/KA_561_001.csv"
 fwrite( entrega, 
         file= archivo_salida, 
         sep= "," )
+
