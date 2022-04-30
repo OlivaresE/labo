@@ -19,7 +19,7 @@ dataset  <- fread("./labo/datasets/paquete_premium_202011.csv", stringsAsFactors
 
 
 #paso la clase a binaria que tome valores {0,1}  enteros
-dataset[ , clase01 := ifelse( clase_ternaria=="BAJA+2", 1L, 0L) ]
+dataset[ , clase01 := ifelse( clase_ternaria %in%  c("BAJA+2","BAJA+1"), 1L, 0L) ]
 
 #los campos que se van a utilizar
 campos_buenos  <- setdiff( colnames(dataset), c("clase_ternaria","clase01") )
@@ -32,16 +32,21 @@ dtrain  <- lgb.Dataset( data= data.matrix(  dataset[ , campos_buenos, with=FALSE
 #genero el modelo con los parametros por default
 modelo  <- lgb.train( data= dtrain,
                       param= list( objective=        "binary",
-                                   num_iterations=     181,  #40
-                                   num_leaves=         812,  #64
-                                   min_data_in_leaf= 6218, #3000
+                                   metric="custom",
+                                   first_metric_only=TRUE,
+                                   boost_from_average=TRUE,
+                                   feature_pre_filter=FALSE,
+                                   verbosity=-100,
                                    seed = 999983,
-                                   max_bin=31,
-                                   learning_rate=0.028765272,
-                                   feature_fraction=0.458839023,
                                    max_depth=-1,
-                                   verbosity=-100
-                                   
+                                   min_gain_to_split=0,
+                                   max_bin=31,
+                                   num_iterations=501,
+                                   force_row_wise=TRUE,
+                                   learning_rate=0.011284351,
+                                   feature_fraction = 0.588206711,
+                                   min_data_in_leaf=4359,
+                                   num_leaves=18
                       ) 
                     )
 
@@ -55,7 +60,7 @@ prediccion  <- predict( modelo,
 
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
-                                 "Predicted"= prediccion > 1/60)  ) #genero la salida
+                                 "Predicted"= prediccion > 0.014946321)  ) #genero la salida
 
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/KA2512/", showWarnings = FALSE )

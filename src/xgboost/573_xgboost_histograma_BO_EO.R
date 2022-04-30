@@ -21,7 +21,7 @@ kBO_iter  <- 100   #cantidad de iteraciones de la Optimizacion Bayesiana
 
 #Aqui se cargan los hiperparametros
 hs <- makeParamSet( 
-         makeNumericParam("eta",              lower=  0.01 , upper=    0.3),   #equivalente a learning rate
+         makeNumericParam("eta",              lower=  0.005 , upper=    0.3),   #equivalente a learning rate
          makeNumericParam("colsample_bytree", lower=  0.2  , upper=    1.0),   #equivalente a feature_fraction
          makeIntegerParam("min_child_weight", lower=  0L   , upper=   10L),    #groseramente equivalente a  min_data_in_leaf
          makeIntegerParam("max_leaves",       lower=  2L   , upper= 1024L),    #profundidad del arbol, NO es equivalente a num_leaves

@@ -21,7 +21,7 @@ kBO_iter  <- 100   #cantidad de iteraciones de la Optimizacion Bayesiana
 
 #Aqui se cargan los hiperparametros
 hs <- makeParamSet( 
-         makeNumericParam("learning_rate",    lower=  0.01 , upper=    0.3),
+         makeNumericParam("learning_rate",    lower=  0.005 , upper=    0.3),
          makeNumericParam("feature_fraction", lower=  0.2  , upper=    1.0),
          makeIntegerParam("min_data_in_leaf", lower=  0    , upper= 8000),
          makeIntegerParam("num_leaves",       lower= 16L   , upper= 1024L),
@@ -166,7 +166,7 @@ if( file.exists(klog) )
 
 
 #paso la clase a binaria que tome valores {0,1}  enteros
-dataset[ , clase01 := ifelse( clase_ternaria=="BAJA+2", 1L, 0L) ]
+dataset[ , clase01 := ifelse( clase_ternaria %in%  c("BAJA+2","BAJA+1"), 1L, 0L) ]
 
 
 #los campos que se van a utilizar

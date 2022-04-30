@@ -40,7 +40,6 @@ dapply  <- fread("./labo/datasets/paquete_premium_202101.csv")
 prediccion  <- predict( modelo, 
                         data.matrix( dapply[, campos_buenos, with=FALSE ]) )
 
-
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
                                  "Predicted"= prediccion > 1/60)  ) #genero la salida

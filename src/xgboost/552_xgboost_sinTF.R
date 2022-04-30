@@ -28,12 +28,13 @@ seed
 #genero el modelo con los parametros por default
 modelo  <- xgb.train( data= dtrain,
                       param= list( objective=       "binary:logistic",
-                                   max_depth=6,
-                                   nrounds=464,
+                                   tree_method= "hist",
+                                   grow_policy="lossguide",
+                                   eta= 0.010161707,
+                                   max_leaves=674,
                                    colsample_bytree=0.402171772,
-                                   min_child_weight=10,
-                                   max_bin=256,
-                                   max_leaves=0),
+                                   min_child_weight=10
+                                                                  ),
                       nrounds= 464
                     )
 
