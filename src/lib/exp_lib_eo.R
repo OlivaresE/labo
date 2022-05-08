@@ -616,10 +616,10 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
 #exp_start( "HT8312" )
 
 #exp_start( "FE8120" )
-#exp_start( "TS9210" )
+#exp_start( "TS8210" )
 
-#exp_start( "HT9310" )
-#exp_restart( "HT9310" ) #reincio porque se murio la vm
+#exp_start( "HT8310" )
+#exp_restart( "HT8310" ) #reincio porque se murio la vm
 
 #exp_start( "FM9410" )
 #exp_start( "SC9510" )
