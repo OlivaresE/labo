@@ -48,18 +48,18 @@ prediccion  <- predict( modelo,
 
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
-                                 "Predicted"= prediccion > 0.016513469)  ) #genero la salida
+                                 "Predicted"= prediccion > 0.016)  ) #genero la salida
 
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
                                  "Predicted"= prediccion)  ) #genero la salida
-setorder(entrega, -Predicted)
-entrega[,Predicted:=0]
-entrega[1:12100, Predicted:=1]
+#setorder(entrega, -Predicted)
+#entrega[,Predicted:=0]
+#entrega[1:12100, Predicted:=1]
 
 dir.create( "./labo/exp/",  showWarnings = FALSE ) 
 dir.create( "./labo/exp/KA2552/", showWarnings = FALSE )
-archivo_salida  <- "./labo/exp/KA2552/KA_552_001.csv"
+archivo_salida  <- "./labo/exp/KA2552/KA_552_002.csv"
 
 #genero el archivo para Kaggle
 fwrite( entrega, 
