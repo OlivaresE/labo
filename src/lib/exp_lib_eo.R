@@ -24,6 +24,8 @@ exp_mlflow_iniciar  <- function()
   Sys.setenv(MLFLOW_BIN="/home/olivares_emiliano_sl/.local/bin/mlflow") #hardcoreo la ruta
   Sys.setenv(MLFLOW_PYTHON_BIN=system("which python3", intern= TRUE ))
   Sys.setenv(MLFLOW_TRACKING_URI= MLFLOW$tracking_uri, intern= TRUE )
+ #Sys.setenv(MLFLOW_BIN="/home/olivares_emiliano_sl/.local/bin/mlflow") #hardcoreo la ruta
+ #Sys.setenv(MLFLOW_PYTHON_BIN=system("/usr/bin/python3", intern= TRUE )) #hardcoreo la ruta
   
   #creo el experimento
   user_st  <-  Sys.info()["user"]
