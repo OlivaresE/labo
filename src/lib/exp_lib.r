@@ -21,8 +21,8 @@ exp_mlflow_iniciar  <- function()
   Sys.setenv( MLFLOW_TRACKING_PASSWORD= MLFLOW$tracking_password )
   mlflow_set_tracking_uri( MLFLOW$tracking_uri )
 
-  Sys.setenv(MLFLOW_BIN=system("which mlflow", intern= TRUE))
-  Sys.setenv(MLFLOW_PYTHON_BIN=system("which python3", intern= TRUE ))
+  Sys.setenv(MLFLOW_BIN=Sys.which("mlflow") )
+  Sys.setenv(MLFLOW_PYTHON_BIN=Sys.which("python3") )
   Sys.setenv(MLFLOW_TRACKING_URI= MLFLOW$tracking_uri, intern= TRUE )
 
   #creo el experimento
@@ -613,7 +613,9 @@ exp_log  <- function( reg, arch=NA, folder="./", ext=".txt", verbose=TRUE )
 
 
 #source( "~/labo/src/lib/exp_lib.r" ) 
-#exp_start( "HT8312" )
+#exp_start( "FE8120" )
+#exp_start( "TS8210" )
+#exp_start( "HT8310" )
 
 #exp_start( "FE8120" )
 #exp_start( "TS9210" )
