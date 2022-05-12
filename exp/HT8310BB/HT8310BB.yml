@@ -1,7 +1,7 @@
 #Hyperparameter Tuning
 
 googlecloud:
-  RAM:   256
+  RAM:   128
   vCPU:    8
   disk:  300
 
@@ -10,7 +10,7 @@ experiment:
   script: "src/completo/z931_HT_lightgbm.r"
   restart: TRUE
   name: "exp"
-  requires:   [ "TS8210C" ]
+  requires:   [ "TS8210B" ]
 
 
 param:
@@ -29,10 +29,10 @@ param:
  #los parametros que son un solo valor  NO van a la B.O. y se pasan fijos
   lightgbm:
 
-    learning_rate:      [ 0.01, 0.2]
-    feature_fraction:   [ 0.05, 1.0 ]
+    learning_rate:      [ 0.009, 0.1]
+    feature_fraction:   [ 0.1, 1.0 ]
     num_leaves:         [ 200, 800, "integer" ]
-    min_data_in_leaf:   [  6000, 10000, "integer" ]
+    min_data_in_leaf:   [  6000, 9000, "integer" ]
 
     lambda_l1:  0
     lambda_l2:  0
