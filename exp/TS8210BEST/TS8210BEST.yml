@@ -28,7 +28,7 @@ param:
     periodos: [ ]
     rango:
       desde:  202001
-      hasta:  202010
+      hasta:  20201
     excluir: [  ]
     undersampling: [ ]  #ATENCION  sin undersampling
 
