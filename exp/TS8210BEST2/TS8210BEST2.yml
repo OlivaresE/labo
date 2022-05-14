@@ -28,13 +28,13 @@ param:
     periodos: [ ]
     rango:
       desde:  202001
-      hasta:  20201
+      hasta:  202010
     excluir: [  ]
     undersampling: [ ]  #ATENCION  sin undersampling
 
   #donde valido
   validate:
-    periodos: [ 202012 ]
+    periodos: [ 202011 ]
     rango:
       desde:  
       hasta:  
@@ -43,7 +43,7 @@ param:
 
   #donde testeo
   test:
-    periodos: [ 202012 ]
+    periodos: [ 202011 ]
     rango:
       desde:  
       hasta:  
@@ -55,7 +55,7 @@ param:
     periodos: [ ]
     rango:
       desde:  202001
-      hasta:  202012
+      hasta:  202011
     excluir: [  ]
     undersampling: [  ]
     
