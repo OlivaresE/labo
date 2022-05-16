@@ -8,22 +8,22 @@ gc() # garbage collection
 # Parámetros ------------------------------------------------
 params <- list()
 params$path_bucket <- "./bucket/exp/"
-params$path_ensemble <- "./ensemble/"
+params$path_ensemble <- "./labo/exp"
 
-params$nombre_exp <- "EN155"
-params$require <- c("ZZ8410", "ZZ9412", "ZZ9414")
+params$nombre_exp <- "EN2"
+params$require <- c("ZZ8499BEST-30seed-1", "ZZ8499C-30seed-1")
 params$KA_start <- 9000
 params$KA_end <- 13000
 params$KA_step <- 500
 
-setwd("~/MEDGC/13_LaboratorioImplementacion/")
+setwd("C://Users//oliva//OneDrive//Desktop//DS//Austral//08 - Labo1/labo")
 # -----------------------------------------------------------
 
 dt_list <- list()
 for (exp in params$require) {
   ka_files <- list.files(
     path = paste0(params$path_bucket, exp, "/"),
-    pattern = "futuro_prediccion_.*.csv",
+    pattern = "futuro_prediccion_semillerio_.*.csv",
     recursive = F, full.names = F
   )
   if (length(ka_files) < 1) {
@@ -32,7 +32,7 @@ for (exp in params$require) {
 
   dt <- map_df(.x = ka_files, .f = function(f) {
     dt <- fread(paste0(params$path_bucket, exp, "/", f))
-    setorder(dt, -prob)
+    setorder(dt, -pred_acumulada)
     dt[, ":="(orden = .I, exp = exp, file = f)] # , file = f
   })
 
@@ -50,6 +50,8 @@ cortes <- seq(
   by = params$KA_step
 )
 
+
+setwd("C://Users//oliva//OneDrive//Desktop//DS//Austral//08 - Labo1")
 path_ka <- paste0(params$path_ensemble, "/", params$nombre_exp, "/")
 dir.create(path_ka,  showWarnings = FALSE ) 
 
