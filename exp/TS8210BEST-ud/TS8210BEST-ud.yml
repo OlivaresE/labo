@@ -28,13 +28,13 @@ param:
     periodos: [ ]
     rango:
       desde:  202001
-      hasta:  202010
+      hasta:  202009
     excluir: [  ]
-    undersampling: [ 0.1 ]  #ATENCION  sin undersampling
+    undersampling: [ ]  #ATENCION  sin undersampling
 
   #donde valido
   validate:
-    periodos: [ 202011 ]
+    periodos: [ 202010 ]
     rango:
       desde:  
       hasta:  
