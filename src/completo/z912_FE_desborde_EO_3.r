@@ -252,7 +252,7 @@ AgregarVariables  <- function( dataset )
   dataset[ , mvr_caja_movimientos:= mcaja_ahorro / ctrx_quarter ]
   dataset[ , mvr_caja_movimientosd:= mcaja_ahorro_dolares / ctrx_quarter ]
   dataset[ , mvr_caja_movimientosdp:= mcaja_ahorro_dolares*mcaja_ahorro / ctrx_quarter ]
-  dataset[ , mvr_caja_movimientosdp:= mcuentas_saldo / tcuentas ] #podria dar infinito
+  dataset[ , mvr_saldo:= mcuentas_saldo / tcuentas ] #podria dar infinito
   dataset[ , productos:= cprestamos_personales * mprestamos_personales ]
   dataset[ , minimo := Master_mconsumototal / Master_mpagominimo ]
   dataset[ , minimo2 := Master_mpagado / Master_mpagominimo ]
