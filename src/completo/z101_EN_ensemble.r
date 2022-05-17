@@ -16,7 +16,7 @@ params$KA_start <- 9000
 params$KA_end <- 13000
 params$KA_step <- 500
 
-setwd("C://Users//oliva//OneDrive//Desktop//DS//Austral//08 - Labo1/labo")
+setwd("C://Users//oliva//OneDrive//Desktop//DS//Austral//08 - Labo1/")
 # -----------------------------------------------------------
 
 dt_list <- list()
