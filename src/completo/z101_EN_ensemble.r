@@ -8,7 +8,7 @@ gc() # garbage collection
 # Parámetros ------------------------------------------------
 params <- list()
 params$path_bucket <- "./bucket/exp/"
-params$path_ensemble <- "./labo/exp"
+params$path_ensemble <- "./exp"
 
 params$nombre_exp <- "EN2"
 params$require <- c("ZZ8499BEST-30seed-1", "ZZ8499C-30seed-1")
