@@ -256,10 +256,6 @@ AgregarVariables  <- function( dataset )
   dataset[ , minimov := Visa_mpagado / Visa_mpagominimo ]
   
  
-  
-  
-  
-  
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
