@@ -8,7 +8,7 @@ experiment:
   script: "src/completo/z921_TS_generico.r"
   restart: FALSE
   name: "exp"
-  requires: [ "FE8120BESTdb" ]
+  requires: [ "FE8120B" ]
 
 
 param:
@@ -28,13 +28,13 @@ param:
     periodos: [ ]
     rango:
       desde:  202001
-      hasta:  202009
+      hasta:  202010
     excluir: [  ]
     undersampling: [ ]  #ATENCION  sin undersampling
 
   #donde valido
   validate:
-    periodos: [ 202010 ]
+    periodos: [ 202011 ]
     rango:
       desde:  
       hasta:  
@@ -43,7 +43,7 @@ param:
 
   #donde testeo
   test:
-    periodos: [ 202010 ]
+    periodos: [ 202011 ]
     rango:
       desde:  
       hasta:  

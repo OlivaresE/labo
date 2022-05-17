@@ -250,6 +250,15 @@ AgregarVariables  <- function( dataset )
   #Aqui debe usted agregar sus propias nuevas variables
   dataset[ , mvr_dos_mas_importantes:= mdescubierto_preacordado / mcaja_ahorro ]
   dataset[ , mvr_caja_movimientos:= mcaja_ahorro / ctrx_quarter ]
+  dataset[ , productos:= cprestamos_personales * mprestamos_personales ]
+  dataset[ , minimo := Master_mconsumototal / Master_mpagominimo ]
+  dataset[ , minimo2 := Master_mpagado / Master_mpagominimo ]
+  dataset[ , minimov := Visa_mpagado / Visa_mpagominimo ]
+  
+ 
+  
+  
+  
   
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
