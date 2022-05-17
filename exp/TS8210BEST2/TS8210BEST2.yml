@@ -38,7 +38,7 @@ param:
     rango:
       desde:  
       hasta:  
-    excluir: [ ]
+    excluir: [ 202006 ]
     undersampling: [  ]
 
   #donde testeo
@@ -47,7 +47,7 @@ param:
     rango:
       desde:  
       hasta:  
-    excluir: [  ]
+    excluir: [ 202006  ]
     undersampling: [  ]
 
   #donde entreno el modelo final
