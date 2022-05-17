@@ -20,10 +20,11 @@ require("ranger")
 setwd( "~/buckets/b1/" )  #cambiar por la carpeta local
 
 #leo el dataset
-dataset  <- fread( "./datasets/paquete_premium.csv.gz", stringsAsFactors= TRUE)
+dataset1  <- fread( "./datasets/paquete_premium.csv.gz", stringsAsFactors= TRUE)
 
 #me quedo SOLO con los BAJA+2
-dataset  <- dataset[  clase_ternaria =="BAJA+2"  & foto_mes>=202001  & foto_mes<=202011, ]
+dataset  <- dataset1[  clase_ternaria =="BAJA+2"  & foto_mes>=202001  & foto_mes<=202011, ]
+dataset  <- dataset[  clase_ternaria =="BAJA+2"  & foto_mes != 202006, ] #saco 202006
 gc()
 
 #quito los nulos para que se pueda ejecutar randomForest,  Dios que algoritmo prehistorico ...
@@ -59,8 +60,8 @@ hclust.rf  <- hclust( as.dist ( 1.0 - modelo$proximity),  #distancia = 1.0 - pro
 
 #primero, creo la carpeta donde van los resultados
 dir.create( "./exp/", showWarnings= FALSE )
-dir.create( "./exp/ST4610", showWarnings= FALSE )
-setwd( "~/buckets/b1/exp/ST4610" )
+dir.create( "./exp/ST4613", showWarnings= FALSE )
+setwd( "~/buckets/b1/exp/ST4613" )
 
 
 #imprimo un pdf con la forma del cluster jerarquico
@@ -69,18 +70,18 @@ plot( hclust.rf )
 dev.off()
 
 
-#genero 7 clusters
+#genero 4 clusters
 h <- 20
 distintos <- 0
 
-while(  h>0  &  !( distintos >=3 & distintos <=4 ) )
+while(  h>0  &  !( distintos >=2 & distintos <=3 ) )
 {
   h <- h - 1 
   rf.cluster  <- cutree( hclust.rf, h)
-
+  
   dataset[  , cluster2 := NULL ]
   dataset[  , cluster2 := rf.cluster ]
-
+  
   distintos  <- nrow( dataset[  , .N,  cluster2 ] )
   cat( distintos, " " )
 }
@@ -98,7 +99,7 @@ fwrite( dataset,
 
 #ahora a mano veo los centroides de los 7 clusters
 #esto hay que hacerlo para cada variable,
-#  y ver cuales son las que mas diferencian a los clusters
+# y ver cuales son las que mas diferencian a los clusters
 #esta parte conviene hacerla desde la PC local, sobre  cluster_de_bajas.txt
 
 dataset[  , mean(ctrx_quarter),  cluster2 ]  #media de la variable  ctrx_quarter
