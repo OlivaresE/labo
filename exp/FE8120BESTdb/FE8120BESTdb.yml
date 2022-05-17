@@ -5,7 +5,7 @@ googlecloud:
 
 
 experiment:
-  script: "src/completo/z912_FE_desborde_EO_2.r"
+  script: "src/completo/z912_FE_desborde_EO_3.r"
   restart: FALSE
   name: "exp"
   requires: [ "DT0001" ]
@@ -19,7 +19,7 @@ param:
   
   variablesmanuales: FALSE
 
-  acumulavars: TRUE   #a lo nuevo lo va aplicando
+  acumulavars: FALSE   #a lo nuevo lo va aplicando
 
   tendenciaYmuchomas: 
     correr: TRUE #Great power comes with great responsability

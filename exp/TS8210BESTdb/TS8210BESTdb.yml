@@ -39,7 +39,7 @@ param:
       desde:  
       hasta:  
     excluir: [ ]
-    undersampling: [ 0.1 ]
+    undersampling: [  ]
 
   #donde testeo
   test:
